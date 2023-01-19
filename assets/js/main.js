@@ -1,7 +1,7 @@
 const inputText = document.querySelector('#input-text')
 const add = document.querySelector('#btn-add');
-/* const edit = document.querySelector('.btn-edit');
-const del = document.querySelector('.btn-delete'); */
+/* const edit = document.querySelector('.btn-edit'); */
+const del = document.querySelector('.btn-delete');
 
 add.addEventListener('click', () =>{
     createTask();
@@ -13,16 +13,21 @@ inputText.addEventListener('keydown', (e) =>{
     }
 })
 
+del.addEventListener('click', ()=>{
+    let ul = document.querySelector('.box-content');
+    ul.removeChild(li);
+    console.log('apagar')
+})
+
 function createTask(){
     let ul = document.querySelector('.box-content');
     const li = createLi();
     ul.appendChild(li);
+    inputText.value = '';
 }
 
 function createLi(){
     let li = document.createElement('li');
-
-    
     li.appendChild(createSpan())
     li.appendChild(createDiv());
     return li;    
@@ -39,7 +44,7 @@ function createDiv(){
     let div = document.createElement('div');
     div.classList.add('buttons');
     let btnEdit = createButton('btn','btn-edit', '<i class="fa-solid fa-pencil"></i>');
-    let btnDel = createButton('btn', 'btn-del', '<i class="fa-solid fa-trash"></i>');
+    let btnDel = createButton('btn', 'btn-delete', '<i class="fa-solid fa-trash"></i>');
     div.appendChild(btnEdit);
     div.appendChild(btnDel);
     return div;

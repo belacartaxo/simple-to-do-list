@@ -44,7 +44,7 @@ body{
 }
 
 .box-text #input-text{
-    width: 91%;
+    width: 93%;
     background-color: rgb(33, 33, 33);
     outline: none;
     padding: 0px 10px;
@@ -75,6 +75,9 @@ body{
     font-size: 16px;
     line-height: 23px;
     padding-left: 5px;
+    word-wrap: break-word;
+    text-align: justify;
+    padding-right: 10px;
 }
 
 .box-content li button{
@@ -88,3 +91,51 @@ body{
     cursor: pointer;
 }
 
+@media screen and (max-width:1200px) {
+    .container{
+        width: 650px;
+    }
+
+    .box-text #input-text{
+        width: 91%;
+    }
+}
+
+@media screen and (max-width:750px) {
+   .container{
+        width: 95%;
+    }
+}
+
+@media screen and (max-width:600px) {
+    .container{
+        width: 110%;
+        padding: 20px 15px 10px 15px;
+    }
+    .box-header h1{
+        font-size: 18px;
+    }
+
+    .box-text{
+        flex-direction: column;
+        align-items: center;
+    }
+    .box-text #input-text{
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .box-text button{
+        width: 100%;
+    }
+}
+
+@media screen and (max-width:420px) {
+    .box-content li{
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .box-content li span{
+        margin-bottom: 6px;
+    }
+}

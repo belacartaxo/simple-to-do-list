@@ -1,16 +1,58 @@
 const inputText = document.querySelector('#input-text')
 const add = document.querySelector('#btn-add');
-/* const edit = document.querySelector('.btn-edit'); */
-const del = document.querySelector('.btn-delete');
+const editWindow = document.querySelector('#edit-window');
+const editWindowBackground = document.querySelector('#background-edit-window');
+const inputEdit = document.querySelector('#input-edit');
+const closeBtn = document.querySelector('#close');
+const updateBtn = document.querySelector('.edit button')
 let ul = document.querySelector('.box-content');
+let spanEdit = '';
+
+inputText.focus()
 
 add.addEventListener('click', () =>{
-    createTask();
+    let inputTextValue = inputText.value;
+    inputTextValue = inputTextValue.trim();
+    if (inputTextValue.length > 0){
+        createTask();
+    }
+    inputText.focus()
+})
+
+closeBtn.addEventListener('click', ()=>{
+    closeWindow();
 })
 
 inputText.addEventListener('keydown', (e) =>{
     if (e.keyCode===13){
-        createTask();
+        let inputTextValue = inputText.value;
+        inputTextValue = inputTextValue.trim();
+        if (inputTextValue.length > 0){
+            createTask();
+        }
+    }
+})
+
+updateBtn.addEventListener('click', ()=>{
+    let inputEditValue = inputEdit.value;
+    inputEditValue = inputEditValue.trim();
+    if (inputEditValue.length > 0){
+        changeTask(spanEdit);
+        inputEdit.value='';
+        closeWindow();
+    }
+    inputEdit.focus();
+})
+
+inputEdit.addEventListener('keydown', (e)=>{
+    if (e.keyCode===13){
+        let inputEditValue = inputEdit.value;
+        inputEditValue = inputEditValue.trim();
+        if (inputEditValue.length > 0){
+            changeTask(spanEdit);
+            inputEdit.value='';
+            closeWindow();
+        }
     }
 })
 
@@ -47,6 +89,7 @@ function createDiv(task){
     let btnDel = createButton('btn', 'btn-delete', '<i class="fa-solid fa-trash"></i>');
 
     btnDel.setAttribute('onclick', `deleteTask('${task.id}')`)
+    btnEdit.setAttribute('onclick', `editTask('${task.id}')`)
 
     div.appendChild(btnEdit);
     div.appendChild(btnDel);
@@ -93,6 +136,28 @@ function createIdList(){
     }
 
     return idItems;
+}
+
+function editTask(id){
+    const li = document.getElementById(`${id}`);
+    spanEdit = li.querySelector('span');
+    openWindow(editWindow);
+}
+
+function changeTask(span){
+    const txt = inputEdit.value;
+    span.innerHTML = txt;
+}
+
+function openWindow(){
+    editWindow.classList.add('open');
+    editWindowBackground.classList.add('open');
+    inputEdit.focus();
+}
+
+function closeWindow(){
+    editWindow.classList.remove('open');
+    editWindowBackground.classList.remove('open');
 }
 
 function deleteTask(id) {

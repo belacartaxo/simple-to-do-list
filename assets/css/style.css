@@ -35,7 +35,7 @@ body{
     padding: 10px 0px;
 }
 
-.box-text .header-tags{
+.box-text .header-tags, #input-edit,  #edit-window button{
     height: 38px;
     background-color: rgb(33, 33, 33);
     color: #ededed;
@@ -50,12 +50,12 @@ body{
     padding: 0px 10px;
 }
 
-.box-text button{
+.box-text button, #edit-window button{
     width: 32px;
     cursor: pointer;
 }
 
-.btn:hover{
+.btn:hover, #edit-window button:hover{
     transition: 0.5s;
     background-color: rgb(95, 95, 97);
 }
@@ -89,6 +89,68 @@ body{
     border: none;
     margin: 3px;
     cursor: pointer;
+}
+
+#background-edit-window{
+    position: fixed;
+    background-color: rgb(18, 18, 18);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.9;
+    z-index: 100;
+    display: none;
+}
+
+#background-edit-window.open{
+    display: block;
+}
+
+#edit-window{
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgb(61, 61, 61);
+    width: 450px;
+    height: 180px;
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 200;
+    display: none;
+}
+
+#edit-window.open{
+    display: block;
+}
+
+#edit-window > button{
+    position: fixed;
+    right: 10px;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    margin-bottom: 10px;
+}
+
+.edit{
+    display: flex;
+    height: 100%;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+}
+
+.edit input{
+    width: 100%;
+    padding-left: 10px;
+    margin-bottom: 20px;
+}
+
+.edit button{
+    width: 100px !important;
+    margin-bottom: 15px;
 }
 
 @media screen and (max-width:1200px) {

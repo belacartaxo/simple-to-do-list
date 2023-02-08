@@ -191,6 +191,12 @@ body{
     }
 }
 
+@media screen and (max-width:520px) {
+    #edit-window{
+        width: 80%;
+    }
+}
+
 @media screen and (max-width:420px) {
     .box-content li{
         flex-direction: column;
